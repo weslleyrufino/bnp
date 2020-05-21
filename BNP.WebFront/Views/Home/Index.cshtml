@@ -1,0 +1,69 @@
+﻿@model IEnumerable<BNP.WebFront.Models.MovimentoManualViewModelResponse>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movimentos Manuais</h2>
+
+
+<a href="Home/CriarMovimentoManual" class="btn">Novo Movimento</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DAT_MES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DAT_ANO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COD_PRODUTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DES_PRODUTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NUM_LANCAMENTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DES_DESCRICAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VAL_VALOR)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DAT_MES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DAT_ANO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COD_PRODUTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DES_PRODUTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NUM_LANCAMENTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DES_DESCRICAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VAL_VALOR)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>

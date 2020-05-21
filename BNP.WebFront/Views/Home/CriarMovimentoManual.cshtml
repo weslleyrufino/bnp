@@ -1,0 +1,83 @@
+﻿@model BNP.WebFront.Models.MovimentoEProdutoCosif
+
+@{
+    ViewBag.Title = "Novo Movimento Manual";
+}
+
+<h2>Novo Movimento Manual</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Preencha o formulário abaixo:</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovimentoManual.DAT_MES, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MovimentoManual.DAT_MES, new { htmlAttributes = new { @class = "form-control", maxlength = "2" } })
+            @Html.ValidationMessageFor(model => model.MovimentoManual.DAT_MES, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovimentoManual.DAT_ANO, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MovimentoManual.DAT_ANO, new { htmlAttributes = new { @class = "form-control", maxlength = "4" } })
+            @Html.ValidationMessageFor(model => model.MovimentoManual.DAT_ANO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovimentoManual.COD_PRODUTO, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+
+            @Html.ValidationMessageFor(model => model.COD_PRODUTO, "", new { @class = "text-danger" })
+            @Html.DropDownList("COD_PRODUTO", (SelectList)ViewBag.ViewCodProduto, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovimentoManual.COD_COSIF, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(model => model.MovimentoManual.COD_COSIF, "", new { @class = "text-danger" })
+            @Html.DropDownList("COD_COSIF", (SelectList)ViewBag.ViewCodCosif, "Selecione", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovimentoManual.VAL_VALOR, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MovimentoManual.VAL_VALOR, new { htmlAttributes = new { @class = "form-control", maxlength = "18" } })
+            @Html.ValidationMessageFor(model => model.MovimentoManual.VAL_VALOR, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MovimentoManual.DES_DESCRICAO, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.MovimentoManual.DES_DESCRICAO, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MovimentoManual.DES_DESCRICAO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
